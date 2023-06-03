@@ -1,11 +1,18 @@
 parser grammar TemplateParser;
 options { tokenVocab=TemplateLexer; }
 
+root: template EOF ;
+
 template: ( TEMPLATE_TEXT
           | template_stmt
+          | cond_template
           | NOT_STMT
-          )+ EOF ;
+          )+ ;
 
+cond_template: STMT_START cond_start STMT_END
+               template
+               STMT_START cond_end STMT_END
+             ;
 
 template_stmt : STMT_START stmt STMT_END ;
 
@@ -19,6 +26,12 @@ expr: fn_call
     | num
     | str
     ;
+
+cond_start : COND_START cond_list ;
+
+cond_end : COND_END ;
+
+cond_list : JSON_PTR ('&' JSON_PTR)* ;
 
 fn_name: FN_NAME ;
 

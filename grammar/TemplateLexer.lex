@@ -17,35 +17,39 @@ mode STMT_MODE;
     SLASH : '/' ;
     PERIOD : '.' ;
     DASH : '-' ;
-
+    AND : '&' ;
+    
     fragment QUOTE : '\'' ;
     fragment BACKSLASH : '\\';
     fragment ALPHA : [a-zA-Z] ;
     fragment DIGIT : [0-9] ;
     fragment ID_SYMBOLS : [_.-] ;
     fragment ALPHA_NUMERIC : ALPHA|DIGIT;
-
+    
+    COND_START : 'if' ;
+    COND_END : 'endif' ;
+    
     NUM: '-'? DIGIT+ ('.' DIGIT+)? ([eE] [-+]? DIGIT+)? ;
-
+    
     FN_NAME : ALPHA (ALPHA_NUMERIC | '_')* ;
-
+    
     ID: (ALPHA_NUMERIC | ID_SYMBOLS)+ ;
-
+    
     JSON_PTR: '/' ID ('/' ID)* ;
-
+    
     RDF_CLASS: ID ':' ID ;
-
+    
     WS : [ \t\n\r\f]+ -> skip ;
-
+    
     STR_START : QUOTE -> pushMode(STR_MODE) ;
 
 mode STR_MODE;
     STR_END : QUOTE -> popMode ;
     ESC : BACKSLASH -> skip, pushMode(STR_ESC_MODE) ;
     STR_CONTENT : ~['\\]+ ;
-
+    
 mode STR_ESC_MODE;
-    ESC_CHAR :
+    ESC_CHAR : 
              ( QUOTE
-             | BACKSLASH
+             | BACKSLASH 
              ) -> popMode ;

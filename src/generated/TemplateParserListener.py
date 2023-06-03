@@ -8,12 +8,30 @@ else:
 # This class defines a complete listener for a parse tree produced by TemplateParser.
 class TemplateParserListener(ParseTreeListener):
 
+    # Enter a parse tree produced by TemplateParser#root.
+    def enterRoot(self, ctx:TemplateParser.RootContext):
+        pass
+
+    # Exit a parse tree produced by TemplateParser#root.
+    def exitRoot(self, ctx:TemplateParser.RootContext):
+        pass
+
+
     # Enter a parse tree produced by TemplateParser#template.
     def enterTemplate(self, ctx:TemplateParser.TemplateContext):
         pass
 
     # Exit a parse tree produced by TemplateParser#template.
     def exitTemplate(self, ctx:TemplateParser.TemplateContext):
+        pass
+
+
+    # Enter a parse tree produced by TemplateParser#cond_template.
+    def enterCond_template(self, ctx:TemplateParser.Cond_templateContext):
+        pass
+
+    # Exit a parse tree produced by TemplateParser#cond_template.
+    def exitCond_template(self, ctx:TemplateParser.Cond_templateContext):
         pass
 
 
@@ -41,6 +59,33 @@ class TemplateParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by TemplateParser#expr.
     def exitExpr(self, ctx:TemplateParser.ExprContext):
+        pass
+
+
+    # Enter a parse tree produced by TemplateParser#cond_start.
+    def enterCond_start(self, ctx:TemplateParser.Cond_startContext):
+        pass
+
+    # Exit a parse tree produced by TemplateParser#cond_start.
+    def exitCond_start(self, ctx:TemplateParser.Cond_startContext):
+        pass
+
+
+    # Enter a parse tree produced by TemplateParser#cond_end.
+    def enterCond_end(self, ctx:TemplateParser.Cond_endContext):
+        pass
+
+    # Exit a parse tree produced by TemplateParser#cond_end.
+    def exitCond_end(self, ctx:TemplateParser.Cond_endContext):
+        pass
+
+
+    # Enter a parse tree produced by TemplateParser#cond_list.
+    def enterCond_list(self, ctx:TemplateParser.Cond_listContext):
+        pass
+
+    # Exit a parse tree produced by TemplateParser#cond_list.
+    def exitCond_list(self, ctx:TemplateParser.Cond_listContext):
         pass
 
 
