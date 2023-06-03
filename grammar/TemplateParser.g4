@@ -1,5 +1,5 @@
-parser grammar ExprParser;
-options { tokenVocab=ExprLexer; }
+parser grammar TemplateParser;
+options { tokenVocab=TemplateLexer; }
 
 template: ( TEMPLATE_TEXT
           | template_stmt

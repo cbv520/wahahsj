@@ -1,4 +1,4 @@
-# Generated from .\ExprParser.g4 by ANTLR 4.13.0
+# Generated from .\TemplateParser.g4 by ANTLR 4.13.0
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -35,9 +35,9 @@ def serializedATN():
         74,3,18,9,0,74,75,5,22,0,0,75,21,1,0,0,0,6,25,27,37,44,55,69
     ]
 
-class ExprParser ( Parser ):
+class TemplateParser ( Parser ):
 
-    grammarFileName = "ExprParser.g4"
+    grammarFileName = "TemplateParser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -115,29 +115,29 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def EOF(self):
-            return self.getToken(ExprParser.EOF, 0)
+            return self.getToken(TemplateParser.EOF, 0)
 
         def TEMPLATE_TEXT(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.TEMPLATE_TEXT)
+                return self.getTokens(TemplateParser.TEMPLATE_TEXT)
             else:
-                return self.getToken(ExprParser.TEMPLATE_TEXT, i)
+                return self.getToken(TemplateParser.TEMPLATE_TEXT, i)
 
         def template_stmt(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.Template_stmtContext)
+                return self.getTypedRuleContexts(TemplateParser.Template_stmtContext)
             else:
-                return self.getTypedRuleContext(ExprParser.Template_stmtContext,i)
+                return self.getTypedRuleContext(TemplateParser.Template_stmtContext,i)
 
 
         def NOT_STMT(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.NOT_STMT)
+                return self.getTokens(TemplateParser.NOT_STMT)
             else:
-                return self.getToken(ExprParser.NOT_STMT, i)
+                return self.getToken(TemplateParser.NOT_STMT, i)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_template
+            return TemplateParser.RULE_template
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTemplate" ):
@@ -152,7 +152,7 @@ class ExprParser ( Parser ):
 
     def template(self):
 
-        localctx = ExprParser.TemplateContext(self, self._ctx, self.state)
+        localctx = TemplateParser.TemplateContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_template)
         self._la = 0 # Token type
         try:
@@ -166,7 +166,7 @@ class ExprParser ( Parser ):
                 token = self._input.LA(1)
                 if token in [1]:
                     self.state = 22
-                    self.match(ExprParser.TEMPLATE_TEXT)
+                    self.match(TemplateParser.TEMPLATE_TEXT)
                     pass
                 elif token in [2]:
                     self.state = 23
@@ -174,7 +174,7 @@ class ExprParser ( Parser ):
                     pass
                 elif token in [3]:
                     self.state = 24
-                    self.match(ExprParser.NOT_STMT)
+                    self.match(TemplateParser.NOT_STMT)
                     pass
                 else:
                     raise NoViableAltException(self)
@@ -186,7 +186,7 @@ class ExprParser ( Parser ):
                     break
 
             self.state = 29
-            self.match(ExprParser.EOF)
+            self.match(TemplateParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -204,17 +204,17 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def STMT_START(self):
-            return self.getToken(ExprParser.STMT_START, 0)
+            return self.getToken(TemplateParser.STMT_START, 0)
 
         def stmt(self):
-            return self.getTypedRuleContext(ExprParser.StmtContext,0)
+            return self.getTypedRuleContext(TemplateParser.StmtContext,0)
 
 
         def STMT_END(self):
-            return self.getToken(ExprParser.STMT_END, 0)
+            return self.getToken(TemplateParser.STMT_END, 0)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_template_stmt
+            return TemplateParser.RULE_template_stmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTemplate_stmt" ):
@@ -229,16 +229,16 @@ class ExprParser ( Parser ):
 
     def template_stmt(self):
 
-        localctx = ExprParser.Template_stmtContext(self, self._ctx, self.state)
+        localctx = TemplateParser.Template_stmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_template_stmt)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 31
-            self.match(ExprParser.STMT_START)
+            self.match(TemplateParser.STMT_START)
             self.state = 32
             self.stmt()
             self.state = 33
-            self.match(ExprParser.STMT_END)
+            self.match(TemplateParser.STMT_END)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -256,15 +256,15 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def fn_call(self):
-            return self.getTypedRuleContext(ExprParser.Fn_callContext,0)
+            return self.getTypedRuleContext(TemplateParser.Fn_callContext,0)
 
 
         def json_ptr(self):
-            return self.getTypedRuleContext(ExprParser.Json_ptrContext,0)
+            return self.getTypedRuleContext(TemplateParser.Json_ptrContext,0)
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_stmt
+            return TemplateParser.RULE_stmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStmt" ):
@@ -279,7 +279,7 @@ class ExprParser ( Parser ):
 
     def stmt(self):
 
-        localctx = ExprParser.StmtContext(self, self._ctx, self.state)
+        localctx = TemplateParser.StmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_stmt)
         try:
             self.state = 37
@@ -315,27 +315,27 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def fn_call(self):
-            return self.getTypedRuleContext(ExprParser.Fn_callContext,0)
+            return self.getTypedRuleContext(TemplateParser.Fn_callContext,0)
 
 
         def json_ptr(self):
-            return self.getTypedRuleContext(ExprParser.Json_ptrContext,0)
+            return self.getTypedRuleContext(TemplateParser.Json_ptrContext,0)
 
 
         def rdf_class(self):
-            return self.getTypedRuleContext(ExprParser.Rdf_classContext,0)
+            return self.getTypedRuleContext(TemplateParser.Rdf_classContext,0)
 
 
         def num(self):
-            return self.getTypedRuleContext(ExprParser.NumContext,0)
+            return self.getTypedRuleContext(TemplateParser.NumContext,0)
 
 
         def str_(self):
-            return self.getTypedRuleContext(ExprParser.StrContext,0)
+            return self.getTypedRuleContext(TemplateParser.StrContext,0)
 
 
         def getRuleIndex(self):
-            return ExprParser.RULE_expr
+            return TemplateParser.RULE_expr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterExpr" ):
@@ -350,7 +350,7 @@ class ExprParser ( Parser ):
 
     def expr(self):
 
-        localctx = ExprParser.ExprContext(self, self._ctx, self.state)
+        localctx = TemplateParser.ExprContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_expr)
         try:
             self.state = 44
@@ -401,10 +401,10 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def FN_NAME(self):
-            return self.getToken(ExprParser.FN_NAME, 0)
+            return self.getToken(TemplateParser.FN_NAME, 0)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_fn_name
+            return TemplateParser.RULE_fn_name
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFn_name" ):
@@ -419,12 +419,12 @@ class ExprParser ( Parser ):
 
     def fn_name(self):
 
-        localctx = ExprParser.Fn_nameContext(self, self._ctx, self.state)
+        localctx = TemplateParser.Fn_nameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_fn_name)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 46
-            self.match(ExprParser.FN_NAME)
+            self.match(TemplateParser.FN_NAME)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -442,30 +442,30 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def fn_name(self):
-            return self.getTypedRuleContext(ExprParser.Fn_nameContext,0)
+            return self.getTypedRuleContext(TemplateParser.Fn_nameContext,0)
 
 
         def LPAREN(self):
-            return self.getToken(ExprParser.LPAREN, 0)
+            return self.getToken(TemplateParser.LPAREN, 0)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ExprParser.ExprContext)
+                return self.getTypedRuleContexts(TemplateParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ExprParser.ExprContext,i)
+                return self.getTypedRuleContext(TemplateParser.ExprContext,i)
 
 
         def RPAREN(self):
-            return self.getToken(ExprParser.RPAREN, 0)
+            return self.getToken(TemplateParser.RPAREN, 0)
 
         def COMMA(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.COMMA)
+                return self.getTokens(TemplateParser.COMMA)
             else:
-                return self.getToken(ExprParser.COMMA, i)
+                return self.getToken(TemplateParser.COMMA, i)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_fn_call
+            return TemplateParser.RULE_fn_call
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterFn_call" ):
@@ -480,7 +480,7 @@ class ExprParser ( Parser ):
 
     def fn_call(self):
 
-        localctx = ExprParser.Fn_callContext(self, self._ctx, self.state)
+        localctx = TemplateParser.Fn_callContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_fn_call)
         self._la = 0 # Token type
         try:
@@ -488,7 +488,7 @@ class ExprParser ( Parser ):
             self.state = 48
             self.fn_name()
             self.state = 49
-            self.match(ExprParser.LPAREN)
+            self.match(TemplateParser.LPAREN)
             self.state = 50
             self.expr()
             self.state = 55
@@ -496,7 +496,7 @@ class ExprParser ( Parser ):
             _la = self._input.LA(1)
             while _la==5:
                 self.state = 51
-                self.match(ExprParser.COMMA)
+                self.match(TemplateParser.COMMA)
                 self.state = 52
                 self.expr()
                 self.state = 57
@@ -504,7 +504,7 @@ class ExprParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 58
-            self.match(ExprParser.RPAREN)
+            self.match(TemplateParser.RPAREN)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -522,10 +522,10 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def JSON_PTR(self):
-            return self.getToken(ExprParser.JSON_PTR, 0)
+            return self.getToken(TemplateParser.JSON_PTR, 0)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_json_ptr
+            return TemplateParser.RULE_json_ptr
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterJson_ptr" ):
@@ -540,12 +540,12 @@ class ExprParser ( Parser ):
 
     def json_ptr(self):
 
-        localctx = ExprParser.Json_ptrContext(self, self._ctx, self.state)
+        localctx = TemplateParser.Json_ptrContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_json_ptr)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 60
-            self.match(ExprParser.JSON_PTR)
+            self.match(TemplateParser.JSON_PTR)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -563,10 +563,10 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def RDF_CLASS(self):
-            return self.getToken(ExprParser.RDF_CLASS, 0)
+            return self.getToken(TemplateParser.RDF_CLASS, 0)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_rdf_class
+            return TemplateParser.RULE_rdf_class
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterRdf_class" ):
@@ -581,12 +581,12 @@ class ExprParser ( Parser ):
 
     def rdf_class(self):
 
-        localctx = ExprParser.Rdf_classContext(self, self._ctx, self.state)
+        localctx = TemplateParser.Rdf_classContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_rdf_class)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 62
-            self.match(ExprParser.RDF_CLASS)
+            self.match(TemplateParser.RDF_CLASS)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -604,10 +604,10 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def NUM(self):
-            return self.getToken(ExprParser.NUM, 0)
+            return self.getToken(TemplateParser.NUM, 0)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_num
+            return TemplateParser.RULE_num
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNum" ):
@@ -622,12 +622,12 @@ class ExprParser ( Parser ):
 
     def num(self):
 
-        localctx = ExprParser.NumContext(self, self._ctx, self.state)
+        localctx = TemplateParser.NumContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_num)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 64
-            self.match(ExprParser.NUM)
+            self.match(TemplateParser.NUM)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -646,18 +646,18 @@ class ExprParser ( Parser ):
 
         def ESC_CHAR(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.ESC_CHAR)
+                return self.getTokens(TemplateParser.ESC_CHAR)
             else:
-                return self.getToken(ExprParser.ESC_CHAR, i)
+                return self.getToken(TemplateParser.ESC_CHAR, i)
 
         def STR_CONTENT(self, i:int=None):
             if i is None:
-                return self.getTokens(ExprParser.STR_CONTENT)
+                return self.getTokens(TemplateParser.STR_CONTENT)
             else:
-                return self.getToken(ExprParser.STR_CONTENT, i)
+                return self.getToken(TemplateParser.STR_CONTENT, i)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_str_content
+            return TemplateParser.RULE_str_content
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStr_content" ):
@@ -672,7 +672,7 @@ class ExprParser ( Parser ):
 
     def str_content(self):
 
-        localctx = ExprParser.Str_contentContext(self, self._ctx, self.state)
+        localctx = TemplateParser.Str_contentContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_str_content)
         self._la = 0 # Token type
         try:
@@ -709,17 +709,17 @@ class ExprParser ( Parser ):
             self.parser = parser
 
         def STR_START(self):
-            return self.getToken(ExprParser.STR_START, 0)
+            return self.getToken(TemplateParser.STR_START, 0)
 
         def str_content(self):
-            return self.getTypedRuleContext(ExprParser.Str_contentContext,0)
+            return self.getTypedRuleContext(TemplateParser.Str_contentContext,0)
 
 
         def STR_END(self):
-            return self.getToken(ExprParser.STR_END, 0)
+            return self.getToken(TemplateParser.STR_END, 0)
 
         def getRuleIndex(self):
-            return ExprParser.RULE_str
+            return TemplateParser.RULE_str
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStr" ):
@@ -734,16 +734,16 @@ class ExprParser ( Parser ):
 
     def str_(self):
 
-        localctx = ExprParser.StrContext(self, self._ctx, self.state)
+        localctx = TemplateParser.StrContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_str)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 72
-            self.match(ExprParser.STR_START)
+            self.match(TemplateParser.STR_START)
             self.state = 73
             self.str_content()
             self.state = 74
-            self.match(ExprParser.STR_END)
+            self.match(TemplateParser.STR_END)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)

@@ -1,4 +1,4 @@
-lexer grammar ExprLexer;
+lexer grammar TemplateLexer;
 
 TEMPLATE_TEXT : ~[<]+ ;
 STMT_START : '<<' -> pushMode(STMT_MODE) ;

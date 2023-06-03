@@ -1,4 +1,4 @@
-# Generated from .\ExprLexer.lex by ANTLR 4.13.0
+# Generated from .\TemplateLexer.lex by ANTLR 4.13.0
 from antlr4 import *
 from io import StringIO
 import sys
@@ -85,7 +85,7 @@ def serializedATN():
         198,5,5,1,0,4,0,0,6,0,0,5,2,0,5,3,0
     ]
 
-class ExprLexer(Lexer):
+class TemplateLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -142,7 +142,7 @@ class ExprLexer(Lexer):
                   "FN_NAME", "ID", "JSON_PTR", "RDF_CLASS", "WS", "STR_START", 
                   "STR_END", "ESC", "STR_CONTENT", "ESC_CHAR" ]
 
-    grammarFileName = "ExprLexer.lex"
+    grammarFileName = "TemplateLexer.lex"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)
