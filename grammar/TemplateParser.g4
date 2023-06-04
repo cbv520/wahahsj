@@ -14,7 +14,15 @@ cond_template: STMT_START cond_start STMT_END
                STMT_START cond_end STMT_END
              ;
 
+cond_start : COND_START cond_list ;
+
+cond_list : json_ptr_cond ('&' json_ptr_cond)* ;
+
+json_ptr_cond: JSON_PTR ;
+
 cond_template_body: template ;
+
+cond_end : COND_END ;
 
 template_stmt : STMT_START stmt STMT_END ;
 
@@ -29,17 +37,9 @@ expr: fn_call
     | str
     ;
 
-cond_start : COND_START cond_list ;
-
-cond_end : COND_END ;
-
-cond_list : json_ptr_cond ('&' json_ptr_cond)* ;
-
-json_ptr_cond: JSON_PTR ;
+fn_call: fn_name '(' expr (',' expr)* ')' ;
 
 fn_name: FN_NAME ;
-
-fn_call: fn_name '(' expr (',' expr)* ')' ;
 
 json_ptr: JSON_PTR ;
 

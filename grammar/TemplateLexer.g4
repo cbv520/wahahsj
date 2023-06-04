@@ -8,15 +8,8 @@ mode STMT_MODE;
     STMT_END : '>>' -> popMode ;
 
     COMMA : ',' ;
-    SEMI : ';' ;
-    COLON : ':' ;
     LPAREN : '(' ;
     RPAREN : ')' ;
-    LCURLY : '{' ;
-    RCURLY : '}' ;
-    SLASH : '/' ;
-    PERIOD : '.' ;
-    DASH : '-' ;
     AND : '&' ;
     
     fragment QUOTE : '\'' ;
