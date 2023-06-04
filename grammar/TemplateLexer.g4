@@ -22,6 +22,8 @@ mode STMT_MODE;
     COND_START : 'if' ;
     COND_END : 'endif' ;
     
+    ASSIGN : ':=' ;
+    
     NUM: '-'? DIGIT+ ('.' DIGIT+)? ([eE] [-+]? DIGIT+)? ;
     
     FN_NAME : ALPHA (ALPHA_NUMERIC | '_')* ;
