@@ -6,6 +6,7 @@ root: template EOF ;
 template: ( TEMPLATE_TEXT
           | template_stmt
           | cond_template
+          | assign
           | NOT_STMT
           )+ ;
 
@@ -23,6 +24,10 @@ json_ptr_cond: JSON_PTR ;
 cond_template_body: template ;
 
 cond_end : COND_END ;
+
+assign: STMT_START var ASSIGN stmt STMT_END ;
+
+var: JSON_PTR ;
 
 template_stmt : STMT_START stmt STMT_END ;
 
