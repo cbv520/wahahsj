@@ -13,7 +13,7 @@ def main():
     asd <<LN(/jjk)>>
     <<endif>>
     
-    <<if /jjk>>
+    <<if /jjk & /l>>
     asdrrrrrrrrrrrrrrrrrrrrr<<LN(/jjk)>>
     <<endif>>
     sdfhj

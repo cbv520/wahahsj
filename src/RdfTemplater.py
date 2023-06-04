@@ -16,14 +16,15 @@ class RdfTemplater(TemplateParserListener):
 
     def __init__(self, template: str):
         self.replacers: Dict[int, Callable[[Dict[str, any]], str]] = {}
-        self.cond_replacers: Dict[int, Callable[[Dict[str, any]], str]] = {}
         self.fn_args: Dict[int, Dict[int, List[Callable[[Dict[str, any]], str]]]] = {}
+        self.cond_replacers: Dict[int, Callable[[Dict[str, any]], str]] = {}
+        self.cond_args: Dict[int, List[str]] = {}
         self.cond_template: Dict[int, str] = {}
+        self.cond_stack = []
         self.curr_stmt = 0
         self.curr_fn = 0
         self.fn_id = 0
         self.fn_stack = []
-        self.cond_stack = []
         lexer = TemplateLexer(InputStream(template))
         parser = src.generated.TemplateParser.TemplateParser(CommonTokenStream(lexer))
         ParseTreeWalker().walk(self, parser.root())
@@ -42,20 +43,13 @@ class RdfTemplater(TemplateParserListener):
 
     # Enter a parse tree produced by TemplateParser#template_stmt.
     def enterTemplate_stmt(self, ctx: TemplateParser.Template_stmtContext):
-        print(ctx.getText())
         self.curr_stmt += 1
         self.template = self.template.replace(ctx.getText(), f'<<REPLACE_{self.curr_stmt}>>', 1)
         if self.cond_stack:
-            print(self.curr_stmt)
-            print(ctx.getText())
             self.cond_template[self.cond_stack[-1]] = self.cond_template[self.cond_stack[-1]].replace(ctx.getText(), f'<<REPLACE_{self.curr_stmt}>>', 1)
-            print("PPPP")
-            print(self.cond_template[self.cond_stack[-1]])
-            print("PPPP")
 
     # Enter a parse tree produced by TemplateParser#fn_name.
     def enterFn_name(self, ctx: TemplateParser.Fn_nameContext):
-        print(ctx.getText())
         self.fn_id += 1
         self.curr_fn = self.fn_id
         self.fn_args[self.curr_stmt] = {}
@@ -95,6 +89,7 @@ class RdfTemplater(TemplateParserListener):
     def enterCond_template(self, ctx:TemplateParser.Cond_templateContext):
         self.curr_stmt += 1
         self.cond_stack.append(self.curr_stmt)
+        self.cond_args[self.curr_stmt] = []
 
     def enterCond_template_body(self, ctx:TemplateParser.Cond_startContext):
         self.cond_template[self.curr_stmt] = ctx.getText()
@@ -103,14 +98,14 @@ class RdfTemplater(TemplateParserListener):
     def exitCond_template(self, ctx:TemplateParser.Cond_templateContext):
         cond = self.cond_stack.pop()
         self.template = self.template.replace(self.cond_template[cond], f'<<REPLACE_{cond}>>')
-        print("@@@@@@@@@@@")
-        print(self.template)
-        print("@@@@@@@@@@@")
-        print(ctx.getText())
-        print("@@@@@@@@@@@")
 
     def enterJson_ptr_cond(self, ctx:TemplateParser.Cond_listContext):
-        self.cond_replacers[self.curr_stmt] = lambda data, cond=self.cond_stack[-1]: self.sd(data, ctx.getText(), cond)
+        self.cond_args[self.curr_stmt].append(ctx.getText())
+
+    def exitCond_list(self, ctx:TemplateParser.Cond_listContext):
+        args = self.cond_args[self.curr_stmt]
+        cond = self.cond_stack[-1]
+        self.cond_replacers[self.curr_stmt] = lambda data: self.apply_cond_to_data(data, args, cond)
 
     def exitCond_start(self, ctx:TemplateParser.Cond_startContext):
         self.template = self.template.replace(f'<<{ctx.getText()}>>', "", 1)
@@ -118,18 +113,13 @@ class RdfTemplater(TemplateParserListener):
     def exitCond_end(self, ctx:TemplateParser.Cond_endContext):
         self.template = self.template.replace(f'<<{ctx.getText()}>>', "", 1)
 
-    def sd(self, data, ptr, cond):
-        print("@@@@@@@@@@@")
-        print(data)
-        print(ptr)
-        print("@@@@@@@@@@@")
-        if jsonpointer.resolve_pointer(data, ptr, None) is None:
+    def apply_cond_to_data(self, data, args, cond):
+        if None in [jsonpointer.resolve_pointer(data, arg, None) for arg in args]:
             return ""
         else:
             return self.cond_template[cond]
 
     def _add_arg(self, proc_step: Callable[[Dict[str, any]], str]):
-        print([[self.curr_stmt],[self.curr_fn]])
         self.fn_args[self.curr_stmt][self.curr_fn].append(proc_step)
 
     def exitRoot(self, ctx:TemplateParser.RootContext):
