@@ -35,6 +35,15 @@ class TemplateParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TemplateParser#cond_template_body.
+    def enterCond_template_body(self, ctx:TemplateParser.Cond_template_bodyContext):
+        pass
+
+    # Exit a parse tree produced by TemplateParser#cond_template_body.
+    def exitCond_template_body(self, ctx:TemplateParser.Cond_template_bodyContext):
+        pass
+
+
     # Enter a parse tree produced by TemplateParser#template_stmt.
     def enterTemplate_stmt(self, ctx:TemplateParser.Template_stmtContext):
         pass
@@ -86,6 +95,15 @@ class TemplateParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by TemplateParser#cond_list.
     def exitCond_list(self, ctx:TemplateParser.Cond_listContext):
+        pass
+
+
+    # Enter a parse tree produced by TemplateParser#json_ptr_cond.
+    def enterJson_ptr_cond(self, ctx:TemplateParser.Json_ptr_condContext):
+        pass
+
+    # Exit a parse tree produced by TemplateParser#json_ptr_cond.
+    def exitJson_ptr_cond(self, ctx:TemplateParser.Json_ptr_condContext):
         pass
 
 

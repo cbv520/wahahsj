@@ -10,9 +10,11 @@ template: ( TEMPLATE_TEXT
           )+ ;
 
 cond_template: STMT_START cond_start STMT_END
-               template
+               cond_template_body
                STMT_START cond_end STMT_END
              ;
+
+cond_template_body: template ;
 
 template_stmt : STMT_START stmt STMT_END ;
 
@@ -31,7 +33,9 @@ cond_start : COND_START cond_list ;
 
 cond_end : COND_END ;
 
-cond_list : JSON_PTR ('&' JSON_PTR)* ;
+cond_list : json_ptr_cond ('&' json_ptr_cond)* ;
+
+json_ptr_cond: JSON_PTR ;
 
 fn_name: FN_NAME ;
 
